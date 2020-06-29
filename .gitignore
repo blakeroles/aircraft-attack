@@ -9,9 +9,11 @@ AircraftAttack/[Bb]uild/
 AircraftAttack/[Bb]uilds/
 AircraftAttack/[Ll]ogs/
 AircraftAttack/[Mm]emoryCaptures/
+AircraftAttack/Assets/Sprites/*
+AircraftAttack/Assets/Resources/*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-!AircraftAttack/[Aa]ssets/**/*.meta
+#!AircraftAttack/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
