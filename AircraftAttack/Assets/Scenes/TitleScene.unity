@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 210506317}
   - component: {fileID: 210506318}
   m_Layer: 0
-  m_Name: Night-Time-ver-04
+  m_Name: Large Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,9 +307,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6972780f5d92f4ae2b7db4f7ec82f794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   backgroundImage1: {fileID: 1810910189}
   backgroundLargeStars1: {fileID: 210506316}
+  backgroundImage2: {fileID: 1810910189}
+  backgroundLargeStars2: {fileID: 210506316}
   mainCam: {fileID: 519420031}
+  trackingTarget: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -618,7 +622,7 @@ GameObject:
   - component: {fileID: 1810910190}
   - component: {fileID: 1810910191}
   m_Layer: 0
-  m_Name: Night-Time-ver-05
+  m_Name: Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
