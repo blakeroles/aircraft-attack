@@ -16,13 +16,14 @@ public class RepeatingBackground : MonoBehaviour
     {
         Camera camSize = Camera.main;
         camHeight = 2f * camSize.orthographicSize;
-        verticalLength = background.transform.position.x + 0.5f * background.GetComponent<Renderer>().bounds.size.y;
+        verticalLength = background.transform.position.y + 0.5f * background.GetComponent<Renderer>().bounds.size.y;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y + GameControl.instance.scrollSpeed * Time.deltaTime, cam.transform.position.z);
         if ((cam.transform.position.y - 0.5f * camHeight) > verticalLength)
         {
             RepositionBackground();

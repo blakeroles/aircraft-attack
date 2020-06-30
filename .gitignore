@@ -11,6 +11,7 @@ AircraftAttack/[Ll]ogs/
 AircraftAttack/[Mm]emoryCaptures/
 AircraftAttack/Assets/Sprites/*
 AircraftAttack/Assets/Resources/*
+AircraftAttack/Assets/Shapes2D/*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 #!AircraftAttack/[Aa]ssets/**/*.meta

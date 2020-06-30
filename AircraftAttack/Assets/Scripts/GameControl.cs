@@ -6,6 +6,7 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
     public bool gameOver = false;
+    public float scrollSpeed;
 
     void Awake()
     {
@@ -30,5 +31,10 @@ public class GameControl : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayerDied()
+    {
+        gameOver = true;
     }
 }
