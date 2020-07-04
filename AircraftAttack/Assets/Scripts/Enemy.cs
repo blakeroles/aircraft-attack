@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "PlayerProjectile")
         {
             health -= GameControl.instance.playerProjectileDamage;
-            Debug.Log(health.ToString());
         }
     }
 }

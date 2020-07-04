@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject playerProjectilePrefab;
     public float playerProjectileSpawnRate;
     public float playerProjectileXOffset;
+    public float playerYOffset;
 
     private float camWidth;
     private float camHeight;
