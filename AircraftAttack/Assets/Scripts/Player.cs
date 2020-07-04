@@ -8,12 +8,17 @@ public class Player : MonoBehaviour
     public float xMobileTapForce;
     public float playerHealth;
 
+    private float camWidth;
+    private float camHeight;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Camera cam = Camera.main;
+        camHeight = 2f * cam.orthographicSize;
+        camWidth = camHeight * cam.aspect; 
     }
 
     // Update is called once per frame
@@ -53,6 +58,16 @@ public class Player : MonoBehaviour
                     }
                 }
             #endif
+
+            if (transform.position.x > 0.5f * camWidth)
+            {
+                transform.position = new Vector3(0.5f * camWidth, transform.position.y, transform.position.z);
+            }
+
+            if (transform.position.x < -0.5f * camWidth)
+            {
+                transform.position = new Vector3(-0.5f * camWidth, transform.position.y, transform.position.z);
+            }
 
         }
     }
