@@ -10,6 +10,8 @@ public class GameControl : MonoBehaviour
     public float playerProjectileDamage;
     public float minNumberOfEnemiesPerLevel;
     public float maxNumberOfEnemiesPerLevel;
+    public float enemiesLeft;
+    public GameObject levelCompleteCanvas;
 
     public GameObject enemyPrefab;
     private GameObject enemy;
@@ -19,6 +21,7 @@ public class GameControl : MonoBehaviour
     private float camWidth;
     private float enemyXPosition;
     private float enemyYPosition;
+
 
 
     void Awake()
@@ -40,13 +43,18 @@ public class GameControl : MonoBehaviour
         Camera cam = Camera.main;
         camHeight = 2f * cam.orthographicSize;
         camWidth = camHeight * cam.aspect; 
+        Time.timeScale = 1f;
         GenerateLevel();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (enemiesLeft <= 0)
+        {
+            Time.timeScale = 0f;
+            levelCompleteCanvas.SetActive(true);
+        }
     }
 
     public void PlayerDied()
@@ -71,5 +79,7 @@ public class GameControl : MonoBehaviour
             enemies[i] = (GameObject) Instantiate(enemyPrefab, new Vector2(enemyXPosition, enemyYPosition), Quaternion.identity);
             enemies[i].transform.eulerAngles = new Vector3(180f, 0f, 0f);
         }
+
+        enemiesLeft = numberOfEnemiesForLevel;
     }
 }

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            GameControl.instance.enemiesLeft -= 1;
         }
     }
 
