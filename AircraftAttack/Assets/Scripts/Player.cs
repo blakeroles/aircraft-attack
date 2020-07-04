@@ -7,9 +7,17 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float xMobileTapForce;
     public float playerHealth;
+    public GameObject playerProjectilePrefab;
+    public float playerProjectileSpawnRate;
+    public float playerProjectileXOffset;
 
     private float camWidth;
     private float camHeight;
+    private float timeSinceLastPlayerProjectilePairSpawned;
+    private GameObject leftPlayerProjectile;
+    private GameObject rightPlayerProjectile;
+
+
 
 
 
@@ -70,6 +78,15 @@ public class Player : MonoBehaviour
             }
 
         }
+
+
+        timeSinceLastPlayerProjectilePairSpawned += Time.deltaTime;
+
+        if (GameControl.instance.gameOver == false && timeSinceLastPlayerProjectilePairSpawned >= playerProjectileSpawnRate)
+        {
+            timeSinceLastPlayerProjectilePairSpawned = 0;
+            SpawnPlayerProjectilePair();
+        }
     }
 
     public void checkHealth()
@@ -78,5 +95,11 @@ public class Player : MonoBehaviour
         {
             GameControl.instance.PlayerDied();
         }
+    }
+
+    public void SpawnPlayerProjectilePair()
+    {
+        leftPlayerProjectile = (GameObject) Instantiate(playerProjectilePrefab, new Vector2(transform.position.x - playerProjectileXOffset, transform.position.y), Quaternion.identity);
+        rightPlayerProjectile = (GameObject) Instantiate(playerProjectilePrefab, new Vector2(transform.position.x + playerProjectileXOffset, transform.position.y), Quaternion.identity);
     }
 }
