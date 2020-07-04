@@ -33,4 +33,12 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            DestroyProjectile();
+        }
+    }
 }
