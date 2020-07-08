@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed;
     public float xMobileTapForce;
-    public float playerHealth;
     public GameObject playerProjectilePrefab;
     public float playerProjectileSpawnRate;
     public float playerProjectileXOffset;
@@ -90,13 +89,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void checkHealth()
-    {
-        if (playerHealth <= 0)
-        {
-            GameControl.instance.PlayerDied();
-        }
-    }
+
 
     public void SpawnPlayerProjectilePair()
     {

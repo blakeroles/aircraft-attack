@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        PlayerPrefs.SetInt("GameContinued", 0);
         SceneManager.LoadScene("MainScene");
     }
 }

@@ -9,6 +9,7 @@ public class GameControl : MonoBehaviour
     public bool gameOver = false;
     public float scrollSpeed;
     public float playerProjectileDamage;
+    public float enemyProjectileDamage;
     public float minNumberOfEnemiesPerLevel;
     public float maxNumberOfEnemiesPerLevel;
     public float enemiesLeft;
@@ -16,8 +17,11 @@ public class GameControl : MonoBehaviour
     public Text levelText;
     public int levelNumber;
     public GameObject levelTextCanvas;
+    public GameObject secondChanceCanvas;
+    public GameObject continueButton;
 
     public GameObject enemyPrefab;
+    public float playerMaxHealth;
     private GameObject enemy;
     private GameObject[] enemies;
     private float numberOfEnemiesForLevel;
@@ -25,6 +29,7 @@ public class GameControl : MonoBehaviour
     private float camWidth;
     private float enemyXPosition;
     private float enemyYPosition;
+    private float playerHealth;
 
 
 
@@ -54,6 +59,8 @@ public class GameControl : MonoBehaviour
 
         levelText.text = "LEVEL: " + levelNumber.ToString();
 
+        playerHealth = playerMaxHealth;
+
         GenerateLevel();
     }
 
@@ -71,6 +78,15 @@ public class GameControl : MonoBehaviour
     public void PlayerDied()
     {
         gameOver = true;
+
+        secondChanceCanvas.SetActive(true);
+        levelTextCanvas.SetActive(false);
+
+        if (PlayerPrefs.GetInt("GameContinued") == 1)
+        {
+            continueButton.SetActive(false);
+        }
+        Time.timeScale = 0f;
     }
 
     public void GenerateLevel()
@@ -92,5 +108,21 @@ public class GameControl : MonoBehaviour
         }
 
         enemiesLeft = numberOfEnemiesForLevel;
+    }
+
+    public void checkPlayerHealth()
+    {
+        if (playerHealth <= 0)
+        {
+            GameControl.instance.PlayerDied();
+        }
+    }
+
+    public void reducePlayerHealth()
+    {
+        Debug.Log(playerHealth.ToString());
+        playerHealth -= GameControl.instance.enemyProjectileDamage;
+        
+        checkPlayerHealth();
     }
 }
