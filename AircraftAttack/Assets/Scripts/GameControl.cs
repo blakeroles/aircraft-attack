@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameControl : MonoBehaviour
     public float maxNumberOfEnemiesPerLevel;
     public float enemiesLeft;
     public GameObject levelCompleteCanvas;
+    public Text levelText;
+    public int levelNumber;
+    public GameObject levelTextCanvas;
 
     public GameObject enemyPrefab;
     private GameObject enemy;
@@ -21,6 +25,7 @@ public class GameControl : MonoBehaviour
     private float camWidth;
     private float enemyXPosition;
     private float enemyYPosition;
+
 
 
 
@@ -44,6 +49,11 @@ public class GameControl : MonoBehaviour
         camHeight = 2f * cam.orthographicSize;
         camWidth = camHeight * cam.aspect; 
         Time.timeScale = 1f;
+
+        levelNumber = PlayerPrefs.GetInt("LevelNumber", 1);
+
+        levelText.text = "LEVEL: " + levelNumber.ToString();
+
         GenerateLevel();
     }
 
@@ -54,6 +64,7 @@ public class GameControl : MonoBehaviour
         {
             Time.timeScale = 0f;
             levelCompleteCanvas.SetActive(true);
+            levelTextCanvas.SetActive(false);
         }
     }
 
